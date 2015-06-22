@@ -52,8 +52,10 @@
    list of names, associated with this numbers
 
    ```python
-   from operatot import itemgetter
+   from operator import itemgetter
    phones = [("Gosho", 1234564),("Pesho",3569080),("Dani",125648),("Koko", 4860780),("Ivo",
-   87030543),("Coco", 78678030)]                                                                   numbs = [4860780,123456,1234564,87030543,125648,3569080,78678030]                               print(lookup_names(phones, numbs)) #["Koko", "Not found!", "Gosho","Ivo", "Not found!","Not found!", "Coco"]
+   87030543),("Coco", 78678030)]
+   numbs = [4860780,123456,1234564,87030543,125648,3569080,78678030]
+   print(lookup_names(phones, numbs)) #["Koko", "Not found!", "Gosho","Ivo", "Not found!","Not found!", "Coco"]
    ```
 
