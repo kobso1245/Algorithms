@@ -1,25 +1,38 @@
-def bir_ran(birthdays, ranges):
-    all_birthdays = [0 for x in range(366)]
-    curr_birt_count = 0
-    for birthday in birthdays:
-        all_birthdays[birthday] += 1
+def bin_search(values, left_elem_to_find, right_elem_to_find):
 
-    for i in range(366):
-        curr_birt_count += all_birthdays[i]
-        all_birthdays[i]  = curr_birt_count
+    left = 0
+    right = len(values) - 1
+    curr = left + (right - left)//2
+    
+    while left < right:
+        if values[curr] >= left_elem_to_find:
+            right = curr
 
-    result = []
-    for curr_range in ranges:
-        if curr_range[1] == 365 and curr_range[0] == 0:
-            result.append(curr_birt_count)
-        elif curr_range[1] == 365:
-            result.append(curr_birt_count - all_birthdays[curr_range[0] - 1])
-        elif curr_range[0] == 0:
-            result.append(all_birthdays[curr_range[1] + 1])
-        elif curr_range[0] > 0 and curr_range[1] < 365:
-            result.append(all_birthdays[curr_range[1]] - all_birthdays[curr_range[0] - 1])
         else:
-            result.append("Out of range!")
+            left = curr + 1
+        curr = left + (right - left)//2
 
-    return result
+    res_left = left
+    right = len(values) - 1
+    while left < right:
+        if values[curr] > right_elem_to_find:
+            right = curr 
+        else:
+            left = curr + 1
+        curr = left + (right - left)//2
+
+    res_right = right
+
+    return res_left, res_right
+
+def birthdays_count(birthdays, ranges):
+    sorted_birthdays = birthdays.sort()
+    res = []
+
+
+    for curr_range in ranges:
+        res_left, res_right = bin_search(birthdays, curr_range[0], curr_range[1])
+        res.append(res_right - res_left)
+
+    return res
 
