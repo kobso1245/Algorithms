@@ -59,3 +59,4 @@
    print(lookup_names(phones, numbs)) #["Koko", "Not found!", "Gosho","Ivo", "Not found!","Not found!", "Coco"]
    ```
 7. Test
+8. Othe
