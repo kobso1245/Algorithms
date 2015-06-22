@@ -58,4 +58,4 @@
    numbs = [4860780,123456,1234564,87030543,125648,3569080,78678030]
    print(lookup_names(phones, numbs)) #["Koko", "Not found!", "Gosho","Ivo", "Not found!","Not found!", "Coco"]
    ```
-
+7. Test
