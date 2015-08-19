@@ -58,5 +58,12 @@
    numbs = [4860780,123456,1234564,87030543,125648,3569080,78678030]
    print(lookup_names(phones, numbs)) #["Koko", "Not found!", "Gosho","Ivo", "Not found!","Not found!", "Coco"]
    ```
-7. Test
-8. Othe
+7. The `square_root.py` module provides the `square_root(number)` function that returns the 
+   square root of a number using binary search
+
+   ```python
+   from square_root import square_root
+   print(square_root(10000000)) #3162.277660
+   ```
+
+8

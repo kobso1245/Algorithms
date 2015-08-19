@@ -10,7 +10,7 @@ def insert_elem(heap, elem):
     heap.append(elem)
     heapify(heap, new_elem_pos)
 
-def create_heap(array):
+def create_heap1(array):
     resulted_array = []
     last_element_index = 0
     for elem in array:
@@ -19,6 +19,42 @@ def create_heap(array):
         last_element_index += 1
 
     return resulted_array
+
+
+def create_heap(array):
+    last_ind = len(array) -1 
+    start_node = (last_ind - 1)//2
+    for curr_node in range(start_node, -1, -1): 
+        left_child = 2*curr_node + 1
+        right_child = 2*curr_node + 2
+        while left_child <= last_ind:
+            if right_child <= last_ind:
+                max_elem = max(array[left_child], array[right_child])
+                if max_elem <= array[curr_node]:
+                    break
+                else:
+                    if array[left_child] == max_elem:
+                        array[left_child], array[curr_node] = swap(array[left_child], array[curr_node])
+                        curr_node = left_child
+                        left_child = 2* curr_node + 1
+                        right_child = 2*curr_node + 2
+                        
+                    else:
+                        array[right_child], array[curr_node] = swap(array[right_child], array[curr_node])
+                        curr_node = right_child
+                        left_child = 2* curr_node + 1
+                        right_child = 2*curr_node + 2
+            else:
+                if array[curr_node] >= array[left_child]:
+                    break
+                else:
+                    array[curr_node], array[left_child] = swap(array[curr_node], array[left_child])
+                    curr_node = left_child
+                    left_child = 2* curr_node + 1
+                    right_child = 2*curr_node + 2
+
+    return array
+
 
 def heapify(resulted_array, last_element_index):
     parrent_node = (last_element_index - 1)//2
@@ -77,6 +113,40 @@ def reverse_heapify(unheapified_max_heap):
 
     return
 
+def push_down(array):
+    curr_node = 0
+    last_ind = len(array) - 1
+    left_child = 2*curr_node + 1
+    right_child = 2*curr_node + 2
+    while left_child <= last_ind:
+        if right_child <= last_ind:
+            max_elem = max(array[left_child], array[right_child])
+            if max_elem <= array[curr_node]:
+                break
+            else:
+                if array[left_child] == max_elem:
+                    array[left_child], array[curr_node] = swap(array[left_child], array[curr_node])
+                    curr_node = left_child
+                    left_child = 2* curr_node + 1
+                    right_child = 2*curr_node + 2
+                        
+                else:
+                    array[right_child], array[curr_node] = swap(array[right_child], array[curr_node])
+                    curr_node = right_child
+                    left_child = 2* curr_node + 1
+                    right_child = 2*curr_node + 2
+        else:
+            if array[curr_node] >= array[left_child]:
+                break
+            else:
+                array[curr_node], array[left_child] = swap(array[curr_node], array[left_child])
+                curr_node = left_child
+                left_child = 2* curr_node + 1
+                right_child = 2*curr_node + 2
+
+    return array
+
+
 
 def remove_top(max_heap):
     if len(max_heap) == 0:
@@ -86,7 +156,7 @@ def remove_top(max_heap):
         top_elem = max_heap[0]
         max_heap[0], max_heap[last_pos] = swap(max_heap[0], max_heap[last_pos])
         del max_heap[-1]
-        reverse_heapify(max_heap)
+        push_down(max_heap)
     return top_elem, max_heap
 
 
@@ -105,13 +175,11 @@ def heap_sort(array):
     return result[::-1]
 
 
-def start():
-    leng = input()
-    arr = input().split(' ')
-    arr = [int(x) for x in arr]
-    res = heap_sort(arr)
-    #return res
-    print(" ".join([str(x) for x in res]))
+def test():
+    num = input()
+    array = input().split(' ')
+    array = [int(x) for x in array]
+    sorted_arr = heap_sort(array)
+    print(" ".join([str(x) for x in sorted_arr]))
 
-if __name__ == '__main__':
-    start()
+test()

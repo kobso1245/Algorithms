@@ -27,7 +27,24 @@ def find_number(phone_book, number):
         curr = left + (right - left)//2
     return "Not found!"
 
+def main():
+    first_line = input().split(' ')
+    names = int(first_line[0])
+    queries = int(first_line[1])
+    phone_book = []
 
-phones = [("Gosho", 1234564),("Pesho",3569080),("Dani",125648),("Koko", 4860780),("Ivo", 87030543),("Coco", 78678030)]
-numbs = [4860780,123456,1234564,87030543,125648,3569080,78678030]
-print(lookup_names(phones, numbs))
+    for i in range(names):
+        name = input().split(' ')
+        phone_book.append((name[1], int(name[0])))
+
+    result = []
+    numbers = []
+    for i in range(queries):
+        number = int(input())
+        numbers.append(number)
+    result = lookup_names(phone_book, numbers)
+    for res in result:
+        print(res)
+
+if __name__ == '__main__':
+    main()
