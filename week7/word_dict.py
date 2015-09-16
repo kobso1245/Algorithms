@@ -13,10 +13,7 @@ class Node:
 class WordDict:
     def __init__(self):
         self.root = None
-
-
-
-
+ 
     def insert(self, word):
         if self.root == None:
             self.root = Node()
@@ -39,6 +36,8 @@ class WordDict:
 
     def lookup(self, word):
         curr_node = self.root
+        if not curr_node:
+            return False
         for letter in word:
             if letter in curr_node.children:
                 curr_node = curr_node.children[letter]
@@ -53,21 +52,29 @@ class WordDict:
     def __str__(self):
         return str(self.root)
 
-
-def main():
+def tester():
+    result = []
     wrd = WordDict()
-    wrd.insert("alabala")
-    wrd.insert("asdf")
-    wrd.insert("aladin")
-    wrd.insert("circle")
-    wrd.insert("asdf")
-    
-    
-    
-    print(wrd.lookup("alabala"))
-    print(wrd.lookup("asdf"))
-    print(wrd.lookup("aladin"))
-    print(wrd.lookup("square"))
-    print(wrd.lookup("rectangle"))
-    
-main()
+    rows = int(input())
+    for i in range(rows):
+        command = input()
+        actual_command = command.split(' ')[0]
+        argument = command.split(' ')[1]
+        if actual_command == 'insert':
+            try:
+                wrd.insert(argument)
+            except Exception:
+                result.append('false')
+        elif actual_command == 'contains':
+            result.append(wrd.lookup(argument))
+        else:
+            pass
+
+    for word in result:
+        if word:
+            print('true')
+        else:
+            print('false')
+
+
+tester()
