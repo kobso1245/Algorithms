@@ -3,9 +3,9 @@ def checker(points, curr_path, curr_node, poseteni):
     curr_path.append(curr_node)
 
     for next_elem in range(len(points[curr_node])):
-        if points[curr_node][next_elem] == 2: #file, go up
+        if points[curr_node][next_elem] == 2:  # file, go up
             poseteni.append(next_elem)
-        elif points[curr_node][next_elem] == 1: #folder, continue with new recursion tree
+        elif points[curr_node][next_elem] == 1:  # folder, continue with new recursion tree
             if next_elem in curr_path:
                 return False
             if next_elem not in poseteni:
@@ -15,6 +15,7 @@ def checker(points, curr_path, curr_node, poseteni):
 
     curr_path.pop()
     return True
+
 
 def test():
     row_num = int(input())
@@ -27,7 +28,7 @@ def test():
     curr_path = []
     poseteni = []
 
-    res = checker(points, curr_path, 0, poseteni) 
+    res = checker(points, curr_path, 0, poseteni)
     if res:
         print('true')
     else:

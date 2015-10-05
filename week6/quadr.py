@@ -18,7 +18,6 @@ def checker(first, second, third, fourth):
     return cnt
 
 
-
 def test():
     cnt = input()
     inp = input().split(' ')
@@ -34,4 +33,3 @@ def test():
 
 
 test()
-

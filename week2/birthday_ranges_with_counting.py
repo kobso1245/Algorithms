@@ -1,4 +1,5 @@
 class Birthday:
+
     def __init__(self, arr):
         self.res = [0 for x in range(366)]
         self.birtdays = [0 for x in range(366)]
@@ -7,9 +8,7 @@ class Birthday:
         self.curr_birt_count = 0
         for i in range(366):
             self.curr_birt_count += self.birtdays[i]
-            self.res[i]  = self.curr_birt_count
-
-
+            self.res[i] = self.curr_birt_count
 
     def add(self, day, cnt):
         self.birtdays[day] += cnt
@@ -34,10 +33,6 @@ class Birthday:
             self.curr_birt_count += self.birtdays[i]
             self.res[i] = self.curr_birt_count
 
-
-
-
-
     def count(self, ranges):
 
         result = []
@@ -45,15 +40,25 @@ class Birthday:
             if curr_range[1] == 365 and curr_range[0] == 0:
                 result.append(self.curr_birt_count)
             elif curr_range[1] == 365:
-                result.append(self.curr_birt_count - self.res[curr_range[0] - 1])
+                result.append(
+                    self.curr_birt_count -
+                    self.res[
+                        curr_range[0] -
+                        1])
             elif curr_range[0] == 0:
                 result.append(self.res[curr_range[1] + 1])
             elif curr_range[0] > 0 and curr_range[1] < 365:
-                result.append(self.res[curr_range[1]] - self.res[curr_range[0] - 1])
+                result.append(
+                    self.res[
+                        curr_range[1]] -
+                    self.res[
+                        curr_range[0] -
+                        1])
             else:
                 result.append("Out of range!")
 
         return result
+
 
 def main():
     inp = input().split(' ')
@@ -71,7 +76,6 @@ def main():
             ranges = [(int(command[1]), int(command[2]))]
             cnt = bday.count(ranges)
             print(cnt[0])
-
 
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
 
-import random 
+import random
+
+
 def sort_helper(sequence, start, end):
     if end - start <= 1:
         k = sequence[start]
@@ -38,8 +40,7 @@ def sort_helper(sequence, start, end):
             sequence[curr_start] = k
             pivot -= 1
 
-
-    if (curr_start == pivot and curr_end == pivot) and (sequence[curr_end]) 
+    if (curr_start == pivot and curr_end == pivot) and (sequence[curr_end])
 
     k = sequence[pivot]
     sequence[pivot] = sequence[end]
@@ -52,9 +53,9 @@ def sort_helper(sequence, start, end):
 
     return
 
+
 def sort(sequence):
-    sort_helper(sequence,0, len(sequence) - 1)
+    sort_helper(sequence, 0, len(sequence) - 1)
     return sequence
 
-print(sort([1,3,2,5,7,8,12,56,43,80,120,6]))
-
+print(sort([1, 3, 2, 5, 7, 8, 12, 56, 43, 80, 120, 6]))

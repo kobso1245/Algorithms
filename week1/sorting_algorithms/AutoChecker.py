@@ -11,8 +11,8 @@ def checker():
 
     sorted_elems = sort(result)
     length = len(sorted_elems)
-    for i in range(length-1):
-        if sorted_elems[i] > sorted_elems[i+1]:
+    for i in range(length - 1):
+        if sorted_elems[i] > sorted_elems[i + 1]:
             return False
     return True
 

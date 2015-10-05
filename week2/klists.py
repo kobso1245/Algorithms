@@ -1,6 +1,8 @@
 from heapq import heappop, heappush, heappushpop
 
+
 class Reversed:
+
     def __init__(self, value):
         self.value = value
 
@@ -10,18 +12,19 @@ class Reversed:
         else:
             return False
 
+
 def k_lists(arrs):
     lists = arrs
     for i in range(len(lists)):
-        lists[i] = [(x, i, 0) for x in lists[i] if x>=0]
+        lists[i] = [(x, i, 0) for x in lists[i] if x >= 0]
 
     max_heap = []
     len_heap = 0
     result = []
     for lst in lists:
         len_heap += 1
-        heappush(max_heap,Reversed(lst[0]))
-    
+        heappush(max_heap, Reversed(lst[0]))
+
     while len_heap > 0:
         max_elem = heappop(max_heap)
         len_heap -= 1
@@ -30,10 +33,21 @@ def k_lists(arrs):
         pos_in_lst = max_elem.value[2]
         result.append(value)
         if len(lists[lst_num]) - 1 > pos_in_lst:
-            heappush(max_heap, Reversed((lists[lst_num][pos_in_lst+1][0], lists[lst_num][pos_in_lst+1][1], pos_in_lst+1)))
+            heappush(
+                max_heap,
+                Reversed(
+                    (lists[lst_num][
+                        pos_in_lst +
+                        1][0],
+                        lists[lst_num][
+                        pos_in_lst +
+                        1][1],
+                        pos_in_lst +
+                        1)))
             len_heap += 1
 
     return result
+
 
 def start():
     inp = int(input())

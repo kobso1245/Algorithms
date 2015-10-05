@@ -1,4 +1,6 @@
 from operator import itemgetter
+
+
 def lookup_names(phone_book, numbers):
     names = []
     phone_book.sort(key=itemgetter(1))
@@ -9,11 +11,10 @@ def lookup_names(phone_book, numbers):
     return names
 
 
-
 def find_number(phone_book, number):
     left = 0
     right = len(phone_book) - 1
-    curr = left + (right - left)//2
+    curr = left + (right - left) // 2
 
     while left <= right:
         if phone_book[curr][1] == number:
@@ -24,8 +25,9 @@ def find_number(phone_book, number):
         if phone_book[curr][1] < number:
             left = curr + 1
 
-        curr = left + (right - left)//2
+        curr = left + (right - left) // 2
     return "Not found!"
+
 
 def main():
     first_line = input().split(' ')

@@ -19,6 +19,7 @@ def graph_builder():
 
     return (incoming_vertexes, outgoing_vertexes, names_to_numbers)
 
+
 def topo_sort(incoming_vertexes, outgoing_vertexes):
     result = []
     vertex_count = len(incoming_vertexes)
@@ -28,6 +29,5 @@ def topo_sort(incoming_vertexes, outgoing_vertexes):
     while removed_vertexes != all_vertexes:
         for vertex in incoming_vertexes:
             if not len(vertex):
-                #removing the edge
+                # removing the edge
                 removed_vertexes.add(vertex)
-

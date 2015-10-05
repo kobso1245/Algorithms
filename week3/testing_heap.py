@@ -1,6 +1,8 @@
 from heapq import heappush, heappop
 
+
 class InvertedHeap:
+
     def __init__(self, value):
         self.value = value
 
@@ -9,7 +11,6 @@ class InvertedHeap:
             return True
         else:
             return False
-
 
     def __eq__(self, other):
         if self.value == other.value:
@@ -31,6 +32,7 @@ class InvertedHeap:
 
 
 class Median:
+
     def __init__(self):
         self.max_heap = []
         self.min_heap = []
@@ -67,6 +69,7 @@ class Median:
                 self.min_heap_cnt += 1
                 self.median = self.min_heap[0]
         return self.median
+
 
 def test():
     med = Median()

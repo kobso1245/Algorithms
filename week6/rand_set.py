@@ -1,5 +1,6 @@
 import random
 
+
 class Hash:
     self.arr = []
     self.elems = []
@@ -29,4 +30,3 @@ class Hash:
 
     def random(self):
         return random.choice(self.elems)
-

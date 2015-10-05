@@ -15,11 +15,12 @@ def longest_subs(elems):
         if curr_max_index == i:
             table[i] = (1, str(elems[i]))
         else:
-            table[i] = (table[curr_max_index][0] + 1, str(elems[i]) + table[curr_max_index][1])
+            table[i] = (table[curr_max_index][0] + 1,
+                        str(elems[i]) + table[curr_max_index][1])
             if table[i][0] > max_length:
                 max_pos = i
                 max_length = table[i][0]
     print(table[max_pos][0])
     print(table[max_pos][1])
 
-longest_subs([6,1,5,3,1,7,2,5,7,4])
+longest_subs([6, 1, 5, 3, 1, 7, 2, 5, 7, 4])

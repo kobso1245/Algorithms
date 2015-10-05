@@ -8,7 +8,12 @@ def bfs(graph, start):
             if graph[curr_node[0]][i] not in passed:
                 passed.add((graph[curr_node[0]][i], curr_node[1] + 1))
                 que.append((graph[curr_node[0]][i], curr_node[1] + 1))
-                graph[curr_node[0]][i] = (graph[curr_node[0]][i], curr_node[1] + 1)
+                graph[
+                    curr_node[0]][i] = (
+                    graph[
+                        curr_node[0]][i],
+                    curr_node[1] + 1)
+
 
 def make_graph():
     inp = input().split(' ')
@@ -20,7 +25,7 @@ def make_graph():
     for i in range(lines_cnt):
         row = input().split(' ')
         if graph[int(row[0])] == -1:
-            graph[int(row[0])]=[int(row[1])]
+            graph[int(row[0])] = [int(row[1])]
         else:
             graph[int(row[0])].append(int(row[1]))
 
@@ -41,13 +46,19 @@ def make_graph():
             return i - 1
 
 
-def dfs(graph,passed, headstart ,curr_node,curr_level, distanses):
+def dfs(graph, passed, headstart, curr_node, curr_level, distanses):
     passed.add(curr_node)
     if distanses[curr_node] == curr_level + headstart:
         return False
     for elem in graph[curr_node]:
         if elem not in passed:
-            res = dfs(graph, passed, headstart, elem, curr_level + 1, distanses)
+            res = dfs(
+                graph,
+                passed,
+                headstart,
+                elem,
+                curr_level + 1,
+                distanses)
 
             if res:
                 return False
@@ -60,7 +71,7 @@ def bfs_new(graph, start):
     passed = set()
     passed.add(start)
 
-    distanses = [0 for x in range(len(graph)+1)]
+    distanses = [0 for x in range(len(graph) + 1)]
 
     while que != []:
         curr_node = que.pop(0)

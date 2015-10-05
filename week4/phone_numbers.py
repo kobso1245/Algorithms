@@ -1,4 +1,5 @@
 class PhoneBook:
+
     def __init__(self):
         self.book = {}
 
@@ -20,6 +21,7 @@ class PhoneBook:
         for name in sorted_names:
             print("{} {}".format(name, self.book[name]))
 
+
 def main():
     book = PhoneBook()
     inp = int(input())
@@ -36,4 +38,3 @@ def main():
             book.remove(row[1])
 
 main()
-

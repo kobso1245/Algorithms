@@ -100,12 +100,11 @@ def graph_builder():
                              curr_node[3] + 1,
                              "3 2"))
 
-        
-
-        i=0
-        while i<6:
+        i = 0
+        while i < 6:
             new_node_1 = variants[i]
-            if new_node_1[0] == goal or new_node_1[1] == goal or new_node_1[2] == goal:
+            if new_node_1[0] == goal or new_node_1[
+                    1] == goal or new_node_1[2] == goal:
 
                 while curr_node != -1:
                     res.append(new_node_1[4])
@@ -124,8 +123,9 @@ def graph_builder():
                 pred[new_node_1] = curr_node
                 graph[new_node_1] = []
             i += 1
-      
+
     return "IMPOSSIBLE"
+
 
 def start():
     res = graph_builder()
@@ -135,5 +135,5 @@ def start():
         for elem in path:
             print(elem)
     except Exception:
-        print( "IMPOSSIBLE")
+        print("IMPOSSIBLE")
 start()

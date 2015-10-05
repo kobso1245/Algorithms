@@ -13,4 +13,3 @@ def sort(sequence):
             sequence[i] = k
 
     return sequence
-

@@ -9,7 +9,7 @@ def swap(first, second):
     return first, second
 
 
-def highest(curr,left, right):
+def highest(curr, left, right):
     max_el = max(left, right)
     if curr < max_el:
         if left >= right:
@@ -19,7 +19,9 @@ def highest(curr,left, right):
     else:
         return 'curr'
 
+
 class Heap:
+
     def __init__(self):
         self.max_heap = []
         self.last_pos = -1
@@ -32,16 +34,15 @@ class Heap:
 
         while parrent_elem >= 0:
             if self.max_heap[parrent_elem] < self.max_heap[curr_pos]:
-                self.max_heap[parrent_elem], self.max_heap[curr_pos] = swap(self.max_heap[parrent_elem],
-                                                                            self.max_heap[curr_pos])
+                self.max_heap[parrent_elem], self.max_heap[curr_pos] = swap(
+                    self.max_heap[parrent_elem], self.max_heap[curr_pos])
             curr_pos = parrent_elem
             parrent_elem = (curr_pos - 1) // 2
 
-
     def __rev_heap(self, start_pos):
         curr_pos = start_pos
-        left_pos = 2*curr_pos + 1
-        right_pos = 2*curr_pos + 2
+        left_pos = 2 * curr_pos + 1
+        right_pos = 2 * curr_pos + 2
 
         while True:
             if left_pos <= self.last_pos:
@@ -52,24 +53,23 @@ class Heap:
                     if subtree == 'curr':
                         break
                     elif subtree == 'left':
-                        self.max_heap[curr_pos], self.max_heap[left_pos] = swap(self.max_heap[curr_pos],
-                                                                                self.max_heap[left_pos])
+                        self.max_heap[curr_pos], self.max_heap[left_pos] = swap(
+                            self.max_heap[curr_pos], self.max_heap[left_pos])
                         curr_pos = left_pos
-                        left_pos = 2*curr_pos + 1
-                        right_pos = 2*curr_pos + 2
+                        left_pos = 2 * curr_pos + 1
+                        right_pos = 2 * curr_pos + 2
 
                     else:
-                        self.max_heap[curr_pos], self.max_heap[right_pos] = swap(self.max_heap[curr_pos],
-                                                                                self.max_heap[right_pos])
+                        self.max_heap[curr_pos], self.max_heap[right_pos] = swap(
+                            self.max_heap[curr_pos], self.max_heap[right_pos])
                         curr_pos = right_pos
-                        left_pos = 2*curr_pos + 1
-                        right_pos = 2*curr_pos + 2
-
+                        left_pos = 2 * curr_pos + 1
+                        right_pos = 2 * curr_pos + 2
 
                 else:
                     if self.max_heap[curr_pos] < self.max_heap[left_pos]:
-                        self.max_heap[curr_pos], self.max_heap[left_pos] = swap(self.max_heap[curr_pos],
-                                                                                self.max_heap[left_pos])
+                        self.max_heap[curr_pos], self.max_heap[left_pos] = swap(
+                            self.max_heap[curr_pos], self.max_heap[left_pos])
                         break
                     else:
                         break
@@ -79,11 +79,10 @@ class Heap:
                 break
         return
 
-
     def pop(self):
         max_el = self.max_heap[0]
-        self.max_heap[0], self.max_heap[self.last_pos] = swap(self.max_heap[0],
-                                                              self.max_heap[self.last_pos])
+        self.max_heap[0], self.max_heap[self.last_pos] = swap(
+            self.max_heap[0], self.max_heap[self.last_pos])
         self.last_pos -= 1
         self.max_heap = self.max_heap[:-1]
         self.__rev_heap(0)
@@ -91,7 +90,6 @@ class Heap:
 
     def __str__(self):
         return str(self.max_heap)
-
 
     def heapify(self):
         curr_pos = (self.last_pos - 1) // 2
@@ -115,17 +113,16 @@ def heap_sort(arr):
 def for_testing_heap_sort(arr):
     res = []
     length = len(arr)
-    #heapify(arr)
+    # heapify(arr)
     #hp = Heap()
     #hp.max_heap = arr
     #hp.last_pos = len(arr) - 1
-    #hp.heapify()
+    # hp.heapify()
 
     for i in range(length):
         res.append(heappop(arr))
 
     return res
-
 
 
 def test():
@@ -138,4 +135,3 @@ def test():
     print(" ".join(res))
 
 test()
-

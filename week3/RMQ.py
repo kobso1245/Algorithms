@@ -1,4 +1,5 @@
 class Node:
+
     def __init__(self, value, index):
         self.value = value
         self.index = index
@@ -6,8 +7,8 @@ class Node:
         self.right_node = None
 
 
-
 class BinarySearchHeap:
+
     def __init__(self):
         self.root = None
 
@@ -25,7 +26,7 @@ class BinarySearchHeap:
                         return
 
                 if curr_node.index < index:
-                    #go right
+                    # go right
                     if curr_node.right_node:
                         if curr_node.right_node.value <= value:
                             parrent_node = curr_node
@@ -45,11 +46,13 @@ class BinarySearchHeap:
                             previous_curr_node = curr_node
                             if parrent_node:
                                 if is_right:
-                                    parrent_node.right_node = Node(value, index)
+                                    parrent_node.right_node = Node(
+                                        value, index)
                                     parrent_node.right_node.left_node = previous_curr_node
                                     return
                                 else:
-                                    parrent_node.left_node = Node(value, index)
+                                    parrent_node.left_node = Node(
+                                        value, index)
                                     parrent_node.left_node.left_node = previous_curr_node
                                     return
                             else:
@@ -57,14 +60,14 @@ class BinarySearchHeap:
                                 self.root.left_node = previous_curr_node
                                 return
                 else:
-                    #go left
+                    # go left
                     if curr_node.left_node:
                         if curr_node.left_node.value <= value:
                             parrent_node = curr_node
                             curr_node = curr_node.left_node
                             is_right = False
                         else:
-                            curr_left_child= curr_node.left_node
+                            curr_left_child = curr_node.left_node
                             curr_node.left_node = Node(value, index)
                             curr_node.left_node.left_node = curr_left_child
                             return
@@ -77,11 +80,13 @@ class BinarySearchHeap:
                             previous_curr_node = curr_node
                             if parrent_node:
                                 if is_right:
-                                    parrent_node.right_node = Node(value, index)
+                                    parrent_node.right_node = Node(
+                                        value, index)
                                     parrent_node.right_node.left_node = previous_curr_node
                                     return
                                 else:
-                                    parrent_node.left_node = Node(value, index)
+                                    parrent_node.left_node = Node(
+                                        value, index)
                                     parrent_node.left_node.left_node = previous_curr_node
                                     return
                             else:
@@ -91,7 +96,6 @@ class BinarySearchHeap:
 
         else:
             self.root = Node(value, index)
-
 
     def min_el(self, start, end):
         curr_node = self.root
@@ -109,17 +113,14 @@ class BinarySearchHeap:
             else:
                 return curr_node.value
 
-
-
     def set_el(self, index, value):
         curr_node = self.root
         parrent_node = None
         is_right = False
 
-
         while curr_node:
             if curr_node.index == index:
-                #item found
+                # item found
                 if curr_node.left_node and curr_node.right_node:
                     if parrent_node:
                         if parrent_node.value <= value and curr_node.left_node.value >= value and curr_node.right_node.value >= value:
@@ -141,7 +142,6 @@ class BinarySearchHeap:
     def set_elem(self, index, value):
         self.insert(value, index)
 
-
     def remove_el(self, index):
         curr_node = self.root
         parrent_node = None
@@ -151,8 +151,6 @@ class BinarySearchHeap:
                 # element found
                 if curr_node.left_node and curr_node.right_node:
                     pass
-
-
 
                 elif curr_node.left_node:
                     if parrent_node:
@@ -212,4 +210,3 @@ def test():
         else:
             srt.set_elem(int(inp_e[1]), int(inp_e[2]))
 test()
-

@@ -13,4 +13,3 @@ def sort(sequence):
             helping_arr[i] -= 1
 
     return result_arr
-

@@ -33,7 +33,6 @@ def main():
             start_node.append(i)
         path.append(0)
 
-
     for node in start_node:
         for i in range(inp):
             is_dir[i] = 0

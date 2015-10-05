@@ -1,4 +1,5 @@
 class Node:
+
     def __init__(self, heapValue, treeValue):
         self.heapValue = heapValue
         self.treeValue = treeValue

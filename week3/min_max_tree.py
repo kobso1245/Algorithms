@@ -1,14 +1,19 @@
 class Node:
+
     def __init__(self, value=""):
         self.value = value
         self.left = ""
         self.right = ""
- 
+
+
 class BST:
+
     def __init__(self):
         self.root = Node()
-    
+
+
 class MinMaxHeap:
+
     def __init__(self):
         pass
 
@@ -59,8 +64,6 @@ class MinMaxHeap:
         return True
 
 
-
-
 a = BST()
 b = MinMaxHeap()
 
@@ -77,4 +80,3 @@ a.root.left.right.left = Node(31)
 a.root.left.right.right = Node(5)
 
 print(b.isMinMax(a.root))
-

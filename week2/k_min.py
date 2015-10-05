@@ -1,6 +1,8 @@
 from heapq import heappop, heappush, heappushpop
 
+
 class Reversed:
+
     def __init__(self, value):
         self.value = value
 
@@ -10,7 +12,9 @@ class Reversed:
         else:
             return False
 
+
 class MaxHeap:
+
     def __init__(self, k):
         self.max_heap = []
         self.volume = k
@@ -23,8 +27,10 @@ class MaxHeap:
             if value >= self.max_heap[0].value:
                 return
             heappushpop(self.max_heap, Reversed(value))
+
     def get_kth(self):
         return self.max_heap[0].value
+
 
 def start():
     inp = input().split(' ')
@@ -36,4 +42,3 @@ def start():
 
     print(heap.get_kth())
 start()
-

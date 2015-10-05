@@ -8,13 +8,15 @@ def convert_to_int(lst):
 
 
 def reader():
-    goal = convert_to_int([0 if x=='off' else 1 for x in input().split(' ')])
+    goal = convert_to_int(
+        [0 if x == 'off' else 1 for x in input().split(' ')])
 
     graph = []
     switches_value = [0 for x in range(16)]
 
     for i in range(16):
-        switches_value[i] = convert_to_int([int(x) for x in input().split(' ')])
+        switches_value[i] = convert_to_int(
+            [int(x) for x in input().split(' ')])
 
     path = []
     passed = set()
@@ -23,7 +25,15 @@ def reader():
     res = graph_builder(passed, goal, 0, path, switches_value, -1, 0)
     print(path)
 
-def graph_builder(passed, goal, curr_node, path, switches_value, father, level):
+
+def graph_builder(
+        passed,
+        goal,
+        curr_node,
+        path,
+        switches_value,
+        father,
+        level):
     if level == 70:
         return False
     if curr_node == goal:
@@ -35,8 +45,15 @@ def graph_builder(passed, goal, curr_node, path, switches_value, father, level):
             if curr_new_val == goal:
                 return True
             passed.add(curr_new_val)
-            res = graph_builder(passed, goal, curr_new_val, path, switches_value ,i, level + 1)
-            if res == True:
+            res = graph_builder(
+                passed,
+                goal,
+                curr_new_val,
+                path,
+                switches_value,
+                i,
+                level + 1)
+            if res:
                 path.append(i)
                 return True
 

@@ -13,6 +13,7 @@ def topo_sort(graph, start_node, visited, res, path):
     path.remove(start_node)
     return True
 
+
 def main():
     inp = int(input())
 
@@ -29,16 +30,16 @@ def main():
     graph = []
     for i in range(inp):
         row = input().split(' ')
-        graph.append([names_to_ind[row[j]] for j in range(1, int(row[0])+1)])
-    
+        graph.append([names_to_ind[row[j]]
+                      for j in range(1, int(row[0]) + 1)])
+
     res = []
     visited = set()
     path = set()
-    result = topo_sort(graph, start_node,visited ,res, path)
+    result = topo_sort(graph, start_node, visited, res, path)
     if result:
         print(" ".join([ind_to_name[res[i]] for i in range(len(res))]))
     else:
         print('BUILD ERROR')
 
 main()
-

@@ -1,11 +1,14 @@
 class Node:
+
     def __init__(self, number="", name=""):
         self.number = number
         self.name = name
         self.left = ""
         self.right = ""
- 
+
+
 class PhoneBook:
+
     def __init__(self):
         self.root = Node()
         self.nodes_cnt = 0
@@ -49,7 +52,7 @@ class PhoneBook:
             if curr_node.right != "":
                 que.append(curr_node.right)
 
-        return 
+        return
 
     def lookup(self, name):
         curr_node = self.root
@@ -84,17 +87,17 @@ class PhoneBook:
                     return "Elem not found!"
 
             else:
-                if curr_node.left !="":
+                if curr_node.left != "":
                     parrent_node = curr_node
                     curr_node = curr_node.left
                     parrent_left = True
-        result = self.__get_changing_elem(curr_node, parrent_node, parrent_left)
-        if type(result) is not Node:
+        result = self.__get_changing_elem(
+            curr_node, parrent_node, parrent_left)
+        if not isinstance(result, Node):
             return
         curr_node.name = result.name
         curr_node.number = result.number
-        return  
-
+        return
 
     def __get_changing_elem(self, curr_node, parrent_node, parrent_left):
         last_value = 0
@@ -110,7 +113,7 @@ class PhoneBook:
         if curr_node.left != "":
             if curr_node.left.right != "":
                 curr_node = curr_node.left.right
-                while curr_node.right!= "":
+                while curr_node.right != "":
                     parrent = curr_node
                     curr_node = curr_node.right
                 print(curr_node.name)
@@ -132,7 +135,7 @@ class PhoneBook:
                 if curr_node.right != "":
                     parrent.right = curr_node.right
                     return curr_node
-                
+
         else:
             if parrent_node == "":
                 curr_node = ""
@@ -141,7 +144,6 @@ class PhoneBook:
                 parrent_node.left = ""
             else:
                 parrent_node.right = ""
-
 
 
 a = PhoneBook()

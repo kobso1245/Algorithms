@@ -1,4 +1,5 @@
 class PhoneBook:
+
     def __init__(self):
         self.numbers = dict()
 
@@ -13,11 +14,12 @@ class PhoneBook:
             return self.numbers[name]
         else:
             return 'NOT FOUND'
+
     def list(self):
-        names = list(self.numbers.keys())
-        names.sort()
+        names = sorted(self.numbers.keys())
         for name in names:
             print("{} {}".format(name, self.numbers[name]))
+
 
 def start():
     book = PhoneBook()
@@ -33,4 +35,3 @@ def start():
         else:
             book.remove(row[1])
 start()
-

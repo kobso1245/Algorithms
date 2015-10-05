@@ -16,8 +16,8 @@ def get_connected(points, stores_array, starting_point):
             if points[curr_node][i] and i not in passed:
                 passed.append(i)
                 que.append((i, curr_level + 1))
-        
-        
+
+
 def start():
     rows_num = int(input())
     graph = []
